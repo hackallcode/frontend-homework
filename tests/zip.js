@@ -96,4 +96,19 @@ QUnit.module('Тестируем функцию zip', function () {
 
         assert.deepEqual(zip(obj1, obj2), obj3);
     });
+
+    QUnit.test('Функция правильно работает без аргументов', function (assert) {
+        assert.deepEqual(zip(), {});
+    });
+
+    QUnit.test('Функция правильно работает с неправильными аргументами', function (assert) {
+        assert.deepEqual(zip(undefined, undefined), {});
+        assert.deepEqual(zip(null, null), {});
+        assert.deepEqual(zip(true, false), {});
+        assert.deepEqual(zip(Infinity, Infinity), {});
+        assert.deepEqual(zip(NaN, NaN), {});
+        assert.deepEqual(zip(-0, 1, +0), {});
+        assert.deepEqual(zip('ab', 'cde'), {});
+        assert.deepEqual(zip(['a'], ['bc', 'def']), {});
+    });
 });
